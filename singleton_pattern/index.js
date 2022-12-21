@@ -18,6 +18,14 @@ class DBConnection {
   }
 }
 
-const connection = new DBConnection("mongodb://...");
+const connection = Object.freeze(new DBConnection("mongodb://..."));
+
+// REFACTOR
+// const dbConnection = uri => Object.freeze({
+//     uri,
+//     connect: () => console.log(`DB ${uri} has been connected!`),
+//     disconnect: () => console.log("DB disconnected!")
+// })
+// const connection = dbConnection("mongodb://...");
 
 export default connection;
